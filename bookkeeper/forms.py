@@ -1,5 +1,5 @@
 from django import forms
-from .models import Book
+from .models import Book, Author, Publisher
 
 
 class BookForm(forms.ModelForm):
@@ -8,3 +8,9 @@ class BookForm(forms.ModelForm):
         fields = (
             '__all__'
         )
+
+
+class PublisherForm(forms.ModelForm):
+    class Meta:
+        model = Publisher
+        fields = '__all__'

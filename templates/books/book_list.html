@@ -5,7 +5,7 @@
     <ul>
         {% for obj in objects %}
             <li>
-                <a href="{% url 'book_detail' obj.id %}">
+                <a href="{% url detail_url obj.id %}">
                     {% if obj.title %} 
                         {{obj.title}} 
                     {% else %} 

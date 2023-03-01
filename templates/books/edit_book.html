@@ -8,7 +8,7 @@
         {{obj.name}} 
     {% endif %}
     {% if form.errors %}Errors in form{% endif %}
-    <form action="{% url 'create_book' %}" method="POST">
+    <form action="{% url edit_url obj.pk %}" method="POST">
         {% csrf_token %}
         {{form.as_div}}
         <button type="submit">Save</button>

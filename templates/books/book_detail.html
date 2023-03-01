@@ -7,5 +7,5 @@
     {% else %} 
         {{obj.name}} 
     {% endif %}
-    <a href="{% url 'edit_book' obj.pk %}">Edit</a>
+    <a href="{% url edit_url obj.pk %}">Edit</a>
 {% endblock content %}
