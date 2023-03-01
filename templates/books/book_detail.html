@@ -2,10 +2,12 @@
 
 {% block title %} {{page_title}} {% endblock title %}
 {% block content %}
-    {% if obj.title %} 
-        {{obj.title}} 
-    {% else %} 
-        {{obj.name}} 
-    {% endif %}
+    <div class="title">
+        {% if obj.title %} 
+            Book: "{{obj.title}}" by {{obj.author.name}} 
+        {% else %} 
+            {{obj.name}} 
+        {% endif %}
+    </div>
     <a href="{% url edit_url obj.pk %}">Edit</a>
 {% endblock content %}

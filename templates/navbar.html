@@ -1,10 +1,31 @@
 <nav>
-    <ul>
-        <li><a href="{% url 'book_list' %}">All books</a></li>
+    <ul class="mainmenu">
+        <!-- <li><a href="{% url 'book_list' %}">All books</a></li>
         <li><a href="{% url 'create_book' %}">Add a book</a></li>
         <li><a href="{% url 'publisher_list' %}">All publishers</a></li>
         <li><a href="{% url 'create_publisher' %}">Add a publisher</a></li>
         <li><a href="{% url 'author_list' %}">All authors</a></li>
-        <li><a href="{% url 'create_author' %}">Add an author</a></li>
+        <li><a href="{% url 'create_author' %}">Add an author</a></li> -->
+        <li>
+            <a>Books</a>
+            <ul class="submenu">
+                <li><a href="{% url 'book_list' %}">All</a></li>
+                <li><a href="{% url 'create_book' %}">Create</a></li>
+            </ul>
+        </li>
+        <li>
+            <a>Publishers</a>
+            <ul class="submenu">
+                <li><a href="{% url 'publisher_list' %}">All</a></li>
+                <li><a href="{% url 'create_publisher' %}">Create</a></li>
+            </ul>
+        </li>
+        <li>
+            <a>Authors</a>
+            <ul class="submenu">
+                <li><a href="{% url 'author_list' %}">All</a></li>
+                <li><a href="{% url 'create_author' %}">Create</a></li>
+            </ul>
+        </li>
     </ul>
 </nav>

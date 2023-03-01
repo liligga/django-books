@@ -2,10 +2,13 @@
 
 {% block title %} {{page_title}}  {% endblock title %}
 {% block content %}
+    <div class="title">
+        {{page_title}}
+    </div>
     {% if form.errors %}Errors in form{% endif %}
-    <form action="{% url create_url %}" method="POST">
+    <form action="{% url create_url %}" method="POST" class="center-form">
         {% csrf_token %}
-        {{form.as_div}}
-        <button type="submit">Save</button>
+        {{form}}
+        <button type="submit" class="form-button">Save</button>
     </form>
 {% endblock content %}

@@ -106,7 +106,7 @@ def edit_publisher(request: HttpRequest, publisher_id: int):
     context = {
         'obj': obj,
         'form': form,
-        'page_title': 'Edit a publisher',
+        'page_title': 'Edit a publisher agency',
         'edit_url': 'edit_publisher'
     }
     return render(request, 'books/edit_book.html', context)
@@ -142,7 +142,7 @@ def create_author(request: HttpRequest):
             return redirect('author_detail', author_id=obj.pk)
     context = {
         'form': form,
-        'page_title': 'Create a author',
+        'page_title': 'Create an author',
         'create_url': 'create_author'
     }
     return render(request, 'books/create_book.html', context)
@@ -159,7 +159,7 @@ def edit_author(request: HttpRequest, author_id: int):
     context = {
         'obj': obj,
         'form': form,
-        'page_title': 'Edit a author',
+        'page_title': 'Edit an author',
         'edit_url': 'edit_author'
     }
     return render(request, 'books/edit_book.html', context)

@@ -2,17 +2,24 @@
 
 {% block title %} {{page_title}} {% endblock title %}
 {% block content %}
-    <ul>
+    <div class="title">
+        {{page_title}}
+    </div>
+    <div class="item-list">
         {% for obj in objects %}
-            <li>
-                <a href="{% url detail_url obj.id %}">
+            <a href="{% url detail_url obj.id %}">
+                <div class="item">
                     {% if obj.title %} 
                         {{obj.title}} 
                     {% else %} 
                         {{obj.name}} 
                     {% endif %}
-                </a>
-            </li>
+                </div>
+            </a>
+        {% empty %}
+            <div class="not-found">
+                Nothing Found
+            </div>
         {% endfor %}
-    </ul>
+    </div>
 {% endblock content %}
