@@ -1,8 +1,7 @@
 from django.http import HttpResponse, HttpResponseRedirect, HttpRequest
 from django.shortcuts import get_object_or_404, render, redirect
-from django.urls import reverse
 from .models import Publisher, Author, Book
-from .forms import BookForm, PublisherForm
+from .forms import BookForm, PublisherForm, AuthorForm
 
 
 def book_list(request: HttpRequest):
@@ -111,3 +110,57 @@ def edit_publisher(request: HttpRequest, publisher_id: int):
         'edit_url': 'edit_publisher'
     }
     return render(request, 'books/edit_book.html', context)
+
+
+def author_list(request: HttpRequest):
+    objects = Author.objects.all()
+    context = {
+        'objects': objects,
+        'detail_url': 'author_detail',
+        'page_title': 'List of all authors' 
+    }
+    return render(request, 'books/book_list.html', context)
+
+
+def author_detail(request: HttpRequest, author_id: int):
+    obj = get_object_or_404(Author, pk=author_id)
+    context = {
+        'obj': obj,
+        'page_title': 'Details of a author',
+        'edit_url': 'edit_author'
+    }
+    return render(request, 'books/book_detail.html', context)
+
+
+def create_author(request: HttpRequest):
+    form = AuthorForm()
+    if request.method == 'POST':
+        form = AuthorForm(request.POST)
+        if form.is_valid():
+            obj = form.save()
+            print("AUTHOOOOR CREATED", obj.pk)
+            return redirect('author_detail', author_id=obj.pk)
+    context = {
+        'form': form,
+        'page_title': 'Create a author',
+        'create_url': 'create_author'
+    }
+    return render(request, 'books/create_book.html', context)
+
+
+def edit_author(request: HttpRequest, author_id: int):
+    obj = get_object_or_404(Author, pk=author_id)
+    form = AuthorForm(instance=obj)
+    if request.method == 'POST':
+        form = AuthorForm(request.POST, instance=obj)
+        if form.is_valid():
+            obj = form.save()
+            return redirect('author_detail', author_id=obj.pk)
+    context = {
+        'obj': obj,
+        'form': form,
+        'page_title': 'Edit a author',
+        'edit_url': 'edit_author'
+    }
+    return render(request, 'books/edit_book.html', context)
+

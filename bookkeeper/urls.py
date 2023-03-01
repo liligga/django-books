@@ -1,8 +1,12 @@
-from django.urls import path, include
+from django.urls import path
 from .views import (
+    author_detail,
+    author_list,
     book_list, 
-    book_detail, 
-    create_book, 
+    book_detail,
+    create_author, 
+    create_book,
+    edit_author, 
     edit_book,
     publisher_list,
     publisher_detail,
@@ -21,5 +25,8 @@ urlpatterns = [
     path('publishers/<int:publisher_id>', publisher_detail, name='publisher_detail'),
     path('publishers/<int:publisher_id>/edit', edit_publisher, name='edit_publisher'),
     path('publishers/create', create_publisher, name='create_publisher'),
-
+    path('authors', author_list, name='author_list'),
+    path('authors/<int:author_id>', author_detail, name='author_detail'),
+    path('authors/<int:author_id>/edit', edit_author, name='edit_author'),
+    path('authors/create', create_author, name='create_author'),
 ]
