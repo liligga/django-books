@@ -2,6 +2,9 @@
 
 {% block title %} List of all books  {% endblock title %}
 {% block content %}
-    Content is coming ... 
-    This is 'List template'
+    <ul>
+        {% for b in books %}
+            <li><a href="{% url 'book_detail' b.id %}">{{b.title}}</a></li>
+        {% endfor %}
+    </ul>
 {% endblock content %}
