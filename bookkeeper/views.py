@@ -40,7 +40,12 @@ def create_book(request: HttpRequest):
 
 def edit_book(request: HttpRequest, book_id: int):
     obj = get_object_or_404(Book, pk=book_id)
-    form = 'FORM'
+    form = BookForm(instance=obj)
+    if request.method == 'POST':
+        form = BookForm(request.POST, instance=obj)
+        if form.is_valide():
+            obj = form.save()
+            return redirect('book_detail', book_id=obj.pk)
     context = {
         'obj': obj,
         'form': form,
