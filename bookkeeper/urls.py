@@ -6,7 +6,8 @@ from .views import (
     edit_book,
     publisher_list,
     publisher_detail,
-    edit_publisher
+    edit_publisher,
+    create_publisher
 )
 
 
@@ -19,4 +20,6 @@ urlpatterns = [
     path('publishers', publisher_list, name='publisher_list'),
     path('publishers/<int:publisher_id>', publisher_detail, name='publisher_detail'),
     path('publishers/<int:publisher_id>/edit', edit_publisher, name='edit_publisher'),
+    path('publishers/create', create_publisher, name='create_publisher'),
+
 ]

@@ -36,7 +36,7 @@ def create_book(request: HttpRequest):
     context = {
         'form': form,
         'page_title': 'Create a book',
-        'detail_url': 'book_detail'
+        'create_url': 'create_book'
     }
     return render(request, 'books/create_book.html', context)
 
@@ -76,6 +76,24 @@ def publisher_detail(request: HttpRequest, publisher_id: int):
         'edit_url': 'edit_publisher'
     }
     return render(request, 'books/book_detail.html', context)
+
+
+def create_publisher(request: HttpRequest):
+    form = PublisherForm()
+    if request.method == 'POST':
+        form = PublisherForm(request.POST)
+        if form.is_valid():
+            obj = form.save()
+            print("PUBL CREATED", obj.pk)
+            return redirect('publisher_detail', publisher_id=obj.pk)
+    context = {
+        'form': form,
+        'page_title': 'Create a publisher agency',
+        'create_url': 'create_publisher'
+    }
+    return render(request, 'books/create_book.html', context)
+
+
 
 
 def edit_publisher(request: HttpRequest, publisher_id: int):
