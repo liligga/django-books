@@ -1,7 +1,11 @@
 {% extends 'index.html' %}
 
-{% block title %} Create a book  {% endblock title %}
+{% block title %} {{page_title}}  {% endblock title %}
 {% block content %}
-    Content is coming ... 
-    This is 'Create template'
+    {% if form.errors %}Errors in form{% endif %}
+    <form action="{% url 'create_book' %}" method="POST">
+        {% csrf_token %}
+        {{form.as_div}}
+        <button type="submit">Save</button>
+    </form>
 {% endblock content %}

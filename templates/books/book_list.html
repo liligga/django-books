@@ -1,10 +1,18 @@
 {% extends 'index.html' %}
 
-{% block title %} List of all books  {% endblock title %}
+{% block title %} {{page_title}} {% endblock title %}
 {% block content %}
     <ul>
-        {% for b in books %}
-            <li><a href="{% url 'book_detail' b.id %}">{{b.title}}</a></li>
+        {% for obj in objects %}
+            <li>
+                <a href="{% url 'book_detail' obj.id %}">
+                    {% if obj.title %} 
+                        {{obj.title}} 
+                    {% else %} 
+                        {{obj.name}} 
+                    {% endif %}
+                </a>
+            </li>
         {% endfor %}
     </ul>
 {% endblock content %}

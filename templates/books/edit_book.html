@@ -1,7 +1,11 @@
 {% extends 'index.html' %}
 
-{% block title %} Edit a book  {% endblock title %}
+{% block title %} {{page_title}} {% endblock title %}
 {% block content %}
-    Content is coming ... 
-    This is 'Edit template'
+    {% if obj.title %} 
+        {{obj.title}} 
+    {% else %} 
+        {{obj.name}} 
+    {% endif %}
+    {{form}}
 {% endblock content %}
