@@ -17,7 +17,7 @@ def book_list(request: HttpRequest):
 
 
 def book_detail(request: HttpRequest, book_id: int):
-    obj = get_object_or_404(Book, pk=book_id)
+    obj = get_object_or_404(Book.objects.select_related("author", "publisher"), pk=book_id)
     context = {
         'obj': obj,
         'page_title': 'Details of a book',
@@ -77,7 +77,7 @@ def publisher_list(request: HttpRequest):
 
 
 def publisher_detail(request: HttpRequest, publisher_id: int):
-    obj = get_object_or_404(Publisher, pk=publisher_id)
+    obj = get_object_or_404(Publisher.objects.prefetch_related("books"), pk=publisher_id)
     context = {
         'obj': obj,
         'page_title': 'Details of a publisher',
@@ -132,7 +132,7 @@ def author_list(request: HttpRequest):
 
 
 def author_detail(request: HttpRequest, author_id: int):
-    obj = get_object_or_404(Author, pk=author_id)
+    obj = get_object_or_404(Author.objects.prefetch_related("books"), pk=author_id)
     context = {
         'obj': obj,
         'page_title': 'Details of a author',

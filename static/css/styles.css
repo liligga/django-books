@@ -25,7 +25,10 @@ nav {
     background-color: #ddd;
     font-size: 18px;
     display: grid;
-    place-items: center;
+    /* place-items: center; */
+    grid-template-columns: 4em auto 3.5em;
+    align-items: center;
+    padding-inline: 1em;
 }
 
 nav ul {
@@ -33,6 +36,10 @@ nav ul {
     gap: 15px;
     justify-content: center;
     text-transform: capitalize;
+}
+
+img.logo {
+    width: 4em;
 }
 
 nav ul.mainmenu>li {
@@ -154,3 +161,4 @@ button.form-button {
 .content .field-name {
     justify-self: end;
 }
+

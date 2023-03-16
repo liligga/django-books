@@ -9,5 +9,13 @@
     <div class="content">
         <div class="field-name">Name: </div><div>{{obj.name}}</div>
         <div class="field-name">E-mail: </div><div>{{obj.email}}</div>
+        <div class="field-name">Books: </div>
+        <div>
+            <ul>
+                {% for book in obj.books.all %}
+                <li><a href="{% url 'book_detail' book.pk %}">{{book.title}}</a></li>
+                {% endfor %} 
+            </ul>
+        </div>
     </div>
 {% endblock content %}

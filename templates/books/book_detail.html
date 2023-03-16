@@ -3,11 +3,13 @@
 {% block title %} {{page_title}} {% endblock title %}
 {% block content %}
     <div class="title">
-        {% if obj.title %} 
-            Book: "{{obj.title}}" by {{obj.author.name}} 
-        {% else %} 
-            {{obj.name}} 
-        {% endif %}
+        Book: "{{obj.title}}" by {{obj.author.name}} 
         <button class="form-button"><a href="{% url edit_url obj.pk %}">Edit</a></button>
+    </div>
+    <div class="content">
+        <div class="field-name">Title: </div><div>{{obj.title}}</div>
+        <div class="field-name">Publication date: </div><div>{{obj.publication_date}}</div>
+        <div class="field-name">Author: </div><div><a href="{% url 'author_detail' obj.author.pk %}">{{obj.author.name}}</a></div>
+        <div class="field-name">Publisher: </div><div><a href="{% url 'publisher_detail' obj.publisher.pk %}">{{obj.publisher.name}}</a></div>
     </div>
 {% endblock content %}
