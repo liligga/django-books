@@ -3,11 +3,11 @@
 
 {% block content %}
     <!-- {{form.as_div}} -->
-    <h5>Please log in</h5>
-    <form method="POST">
+    <h5 class="title">Please log in</h5>
+    <form method="POST" class="center-form">
         {% csrf_token %}
-        <label>Username: {% render_field form.username %} </label>
-        <label>Password: {% render_field form.password %} </label>
-        <button type="submit">Log in</button>
+        <label>Username: </label>{% render_field form.username %}
+        <label>Password: </label>{% render_field form.password %}
+        <button type="submit" class="form-button">Log in</button>
     </form>
 {% endblock content %}

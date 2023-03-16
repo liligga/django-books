@@ -65,11 +65,16 @@ nav ul.submenu {
 button.form-button {
     border: none;
     border-radius: 3px;
-    padding: 5px 10px;
+    padding: 10px 15px;
+    font-size: 16px;
     background-color: skyblue;
     font-weight: 700;
     font-family: 'Ubuntu', sans-serif;
     cursor: pointer;
+}
+
+button.form-button.small {
+    padding: 3px 12px;
 }
 
 .container {
@@ -88,6 +93,7 @@ button.form-button {
     grid-column: 2/4;
     grid-template-columns: 1fr 1fr; /* fallback for subgrid */
     grid-template-columns: subgrid;
+    align-items: center;
 }
 
 .center-form label {
@@ -98,6 +104,11 @@ button.form-button {
 .center-form :is(input, textarea, button.form-button) {
     grid-column: 2/3;
     justify-self: start;
+}
+
+.center-form input {
+    height: 2em;
+    padding: 5px;
 }
 
 .title {

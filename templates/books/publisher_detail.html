@@ -4,7 +4,7 @@
 {% block content %}
     <div class="title">
         {{obj.name}} 
-        <button class="form-button"><a href="{% url edit_url obj.pk %}">Edit</a></button>
+        <button class="form-button small"><a href="{% url edit_url obj.pk %}">Edit</a></button>
     </div>
     <div class="content">
         <div class="field-name">Name: </div><div>{{obj.name}}</div>
