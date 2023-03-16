@@ -34,9 +34,10 @@ Models for database in this project are:
 
 ## Usage
 To start this project on your machine 
-  - clone the repository, 
-  - create virtual environment, 
-  - install dependencies(`requirements.txt`), 
-  - run migrations, 
-  - create superuser(for admin panel) 
-  - run server
+  - clone the repository(`git clone https://github.com/liligga/django-books`)
+  - create virtual environment(`python -m venv venv; source venv/bin/activate`)
+  - install dependencies(`pip install -r requirements.txt`)
+  - run migrations(`python manage.py migrate`)
+  - create superuser(for admin panel)(`python manage.py createsuperuser`)
+  - seed some data(`python manage.py seed`)
+  - run server(`python manage.py runserver`)

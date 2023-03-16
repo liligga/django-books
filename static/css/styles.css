@@ -122,3 +122,7 @@ button.form-button {
     font-size: 22px;
     text-align: center;
 }
+
+.item-table {
+    grid-column: 1/-1;
+}

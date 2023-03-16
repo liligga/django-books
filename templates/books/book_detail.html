@@ -8,6 +8,6 @@
         {% else %} 
             {{obj.name}} 
         {% endif %}
+        <button class="form-button"><a href="{% url edit_url obj.pk %}">Edit</a></button>
     </div>
-    <a href="{% url edit_url obj.pk %}">Edit</a>
 {% endblock content %}

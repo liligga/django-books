@@ -72,9 +72,8 @@ def publisher_list(request: HttpRequest):
     context = {
         'objects': objects,
         'detail_url': 'publisher_detail',
-        'page_title': 'List of all publishers' 
     }
-    return render(request, 'books/book_list.html', context)
+    return render(request, 'books/publisher_list.html', context)
 
 
 def publisher_detail(request: HttpRequest, publisher_id: int):

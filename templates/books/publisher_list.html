@@ -1,0 +1,28 @@
+{% extends 'index.html' %}
+
+{% block title %} {{page_title}} {% endblock title %}
+{% block content %}
+    <div class="title">
+        List of all publishers
+    </div>
+    <table class="item-table">
+        {% for obj in objects %}
+            <tr>
+                <td>{{obj.pk}}</td>
+                <td>
+                    <a href="{% url detail_url obj.id %}">
+                        {{obj.name}} 
+                    </a>
+                </td>
+                <td>{{obj.address|truncatechars:10}}</td>
+                <td><a href="{% url 'edit_publisher' obj.pk %}">Update</a></td>
+                <td>Delete</td>
+            </tr>
+        {% empty %}
+            <tr class="not-found">
+                Nothing Found
+            </tr>
+        {% endfor %}
+
+    </table>
+{% endblock content %}
