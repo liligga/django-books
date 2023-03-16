@@ -7,6 +7,9 @@
         <a href="{% url edit_url obj.pk %}"><button class="form-button small">Edit</button></a>
     </div>
     <div class="content">
+        {% if obj.photo %}
+        <img src="{{obj.photo.url}}" alt="">
+        {% endif %}
         <div class="field-name">Name: </div><div>{{obj.name}}</div>
         <div class="field-name">E-mail: </div><div>{{obj.email}}</div>
         <div class="field-name">Books: </div>

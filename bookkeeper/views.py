@@ -36,7 +36,7 @@ def create_book(request: HttpRequest):
         return redirect('create_author')
     form = BookForm()
     if request.method == 'POST':
-        form = BookForm(request.POST)
+        form = BookForm(request.POST, request.FILES)
         if form.is_valid():
             obj = form.save()
             print("BOOOOOK CREATED", obj.pk)
@@ -54,9 +54,10 @@ def edit_book(request: HttpRequest, book_id: int):
     obj = get_object_or_404(Book, pk=book_id)
     form = BookForm(instance=obj)
     if request.method == 'POST':
-        form = BookForm(request.POST, instance=obj)
+        form = BookForm(request.POST, instance=obj, files=request.FILES)
         if form.is_valid():
             obj = form.save()
+            print(obj.cover)
             return redirect('book_detail', book_id=obj.pk)
     context = {
         'obj': obj,
@@ -135,7 +136,7 @@ def author_detail(request: HttpRequest, author_id: int):
     obj = get_object_or_404(Author.objects.prefetch_related("books"), pk=author_id)
     context = {
         'obj': obj,
-        'page_title': 'Details of a author',
+        'page_title': 'Details of an author',
         'edit_url': 'edit_author'
     }
     return render(request, 'books/author_detail.html', context)

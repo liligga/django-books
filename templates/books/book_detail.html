@@ -7,6 +7,9 @@
         <a href="{% url edit_url obj.pk %}"><button class="form-button small">Edit</button></a>
     </div>
     <div class="content">
+        {% if obj.cover %}
+        <img src="{{obj.cover.url}}" alt="">
+        {% endif %}
         <div class="field-name">Title: </div><div>{{obj.title}}</div>
         <div class="field-name">Publication date: </div><div>{{obj.publication_date}}</div>
         <div class="field-name">Author: </div><div><a href="{% url 'author_detail' obj.author.pk %}">{{obj.author.name}}</a></div>
