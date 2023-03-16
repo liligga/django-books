@@ -1,0 +1,13 @@
+{% extends 'index.html' %}
+{% load widget_tweaks %}
+
+{% block content %}
+    <!-- {{form.as_div}} -->
+    <h5>Please log in</h5>
+    <form method="POST">
+        {% csrf_token %}
+        <label>Username: {% render_field form.username %} </label>
+        <label>Password: {% render_field form.password %} </label>
+        <button type="submit">Log in</button>
+    </form>
+{% endblock content %}

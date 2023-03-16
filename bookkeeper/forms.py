@@ -3,11 +3,22 @@ from .models import Book, Author, Publisher
 
 
 class BookForm(forms.ModelForm):
+    # publication_date = forms.DateField(
+    #     widget=forms.SelectDateWidget(
+    #         # empty_label=("Choose Year", "Choose Month", "Choose Day"),
+    #     ),
+    # )
     class Meta:
         model = Book
-        fields = (
-            '__all__'
-        )
+        fields = ('__all__')
+        widgets = {
+            'publication_date': forms.DateInput(
+            format=('%Y-%m-%d'),
+            attrs={ 
+                'placeholder': 'Select a date',
+                'type': 'date'
+            }),
+        }
 
 
 class PublisherForm(forms.ModelForm):

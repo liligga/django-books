@@ -2,6 +2,8 @@ from django.http import HttpResponse, HttpResponseRedirect, HttpRequest
 from django.shortcuts import get_object_or_404, render, redirect
 from .models import Publisher, Author, Book
 from .forms import BookForm, PublisherForm, AuthorForm
+from django.contrib.auth.decorators import login_required
+
 
 
 def book_list(request: HttpRequest):
@@ -24,7 +26,14 @@ def book_detail(request: HttpRequest, book_id: int):
     return render(request, 'books/book_detail.html', context)
 
 
+@login_required(login_url='user_login')
 def create_book(request: HttpRequest):
+    if Publisher.objects.count() < 1:
+        # if there are no publishers to choose from
+        return redirect('create_publisher')
+    if Author.objects.count() < 1:
+        # if there are no authors to choose from
+        return redirect('create_author')
     form = BookForm()
     if request.method == 'POST':
         form = BookForm(request.POST)
@@ -40,6 +49,7 @@ def create_book(request: HttpRequest):
     return render(request, 'books/create_book.html', context)
 
 
+@login_required(login_url='user_login')
 def edit_book(request: HttpRequest, book_id: int):
     obj = get_object_or_404(Book, pk=book_id)
     form = BookForm(instance=obj)
@@ -77,6 +87,7 @@ def publisher_detail(request: HttpRequest, publisher_id: int):
     return render(request, 'books/book_detail.html', context)
 
 
+@login_required(login_url='user_login')
 def create_publisher(request: HttpRequest):
     form = PublisherForm()
     if request.method == 'POST':
@@ -93,8 +104,7 @@ def create_publisher(request: HttpRequest):
     return render(request, 'books/create_book.html', context)
 
 
-
-
+@login_required(login_url='user_login')
 def edit_publisher(request: HttpRequest, publisher_id: int):
     obj = get_object_or_404(Publisher, pk=publisher_id)
     form = PublisherForm(instance=obj)
@@ -132,6 +142,7 @@ def author_detail(request: HttpRequest, author_id: int):
     return render(request, 'books/book_detail.html', context)
 
 
+@login_required(login_url='user_login')
 def create_author(request: HttpRequest):
     form = AuthorForm()
     if request.method == 'POST':
@@ -148,6 +159,7 @@ def create_author(request: HttpRequest):
     return render(request, 'books/create_book.html', context)
 
 
+@login_required(login_url='user_login')
 def edit_author(request: HttpRequest, author_id: int):
     obj = get_object_or_404(Author, pk=author_id)
     form = AuthorForm(instance=obj)

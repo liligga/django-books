@@ -62,6 +62,7 @@ button.form-button {
     background-color: skyblue;
     font-weight: 700;
     font-family: 'Ubuntu', sans-serif;
+    cursor: pointer;
 }
 
 .container {
