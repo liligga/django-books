@@ -14,7 +14,7 @@
                         {{obj.name}} 
                     </a>
                 </td>
-                <td>{{obj.address|truncatechars:10}}</td>
+                <td>{{obj.address|truncatechars:25}}</td>
                 <td><a href="{% url 'edit_publisher' obj.pk %}">Update</a></td>
                 <td>Delete</td>
             </tr>

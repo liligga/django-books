@@ -72,6 +72,7 @@ button.form-button {
     grid-template-columns: repeat(4, 1fr);
     gap: 10px;
     margin-top: 3em;
+    padding-bottom: 2.5em;
 }
 
 .center-form {
@@ -125,4 +126,31 @@ button.form-button {
 
 .item-table {
     grid-column: 1/-1;
+    border-collapse: collapse;
+}
+
+.item-table tr:nth-child(even){
+    background-color: #ddd;
+}
+
+.item-table tr:hover{
+    background-color: aliceblue;
+}
+
+.item-table td {
+    padding: 0.4em;
+}
+
+.content {
+    grid-column: 2/4;
+}
+
+.content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 0.8em;
+}
+
+.content .field-name {
+    justify-self: end;
 }

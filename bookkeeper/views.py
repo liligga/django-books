@@ -83,7 +83,7 @@ def publisher_detail(request: HttpRequest, publisher_id: int):
         'page_title': 'Details of a publisher',
         'edit_url': 'edit_publisher'
     }
-    return render(request, 'books/book_detail.html', context)
+    return render(request, 'books/publisher_detail.html', context)
 
 
 @login_required(login_url='user_login')
@@ -128,7 +128,7 @@ def author_list(request: HttpRequest):
         'detail_url': 'author_detail',
         'page_title': 'List of all authors' 
     }
-    return render(request, 'books/book_list.html', context)
+    return render(request, 'books/author_list.html', context)
 
 
 def author_detail(request: HttpRequest, author_id: int):
@@ -138,7 +138,7 @@ def author_detail(request: HttpRequest, author_id: int):
         'page_title': 'Details of a author',
         'edit_url': 'edit_author'
     }
-    return render(request, 'books/book_detail.html', context)
+    return render(request, 'books/author_detail.html', context)
 
 
 @login_required(login_url='user_login')
