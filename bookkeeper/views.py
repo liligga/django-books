@@ -55,6 +55,7 @@ def edit_book(request: HttpRequest, book_id: int):
     form = BookForm(instance=obj)
     if request.method == 'POST':
         form = BookForm(request.POST, instance=obj, files=request.FILES)
+        print(form)
         if form.is_valid():
             obj = form.save()
             print(obj.cover)

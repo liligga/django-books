@@ -15,8 +15,8 @@
                     </a>
                 </td>
                 <td>{{obj.email|truncatechars:25}}</td>
-                <td><a href="{% url 'edit_publisher' obj.pk %}">Update</a></td>
-                <td>Delete</td>
+                <td><a href="{% url 'edit_author' obj.pk %}"><button class="form-button small">Update</button></a></td>
+                <td><button class="form-button small">Delete</button></td>
             </tr>
         {% empty %}
             <tr class="not-found">

@@ -1,4 +1,5 @@
 {% extends 'index.html' %}
+{% load static %}
 
 {% block title %} {{page_title}} {% endblock title %}
 {% block content %}
@@ -9,6 +10,8 @@
     <div class="content">
         {% if obj.photo %}
         <img src="{{obj.photo.url}}" alt="">
+        {% else %}
+        <img src="{% static 'images/person.png' %}" alt=""> 
         {% endif %}
         <div class="field-name">Name: </div><div>{{obj.name}}</div>
         <div class="field-name">E-mail: </div><div>{{obj.email}}</div>

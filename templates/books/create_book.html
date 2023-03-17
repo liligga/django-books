@@ -6,7 +6,7 @@
         {{page_title}}
     </div>
     {% if form.errors %}Errors in form{% endif %}
-    <form action="{% url create_url %}" method="POST" class="center-form">
+    <form action="{% url create_url %}" method="POST" class="center-form" enctype="multipart/form-data">
         {% csrf_token %}
         {{form}}
         <button type="submit" class="form-button">Save</button>

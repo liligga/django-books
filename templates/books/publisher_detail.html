@@ -1,14 +1,17 @@
 {% extends 'index.html' %}
+{% load static %}
 
 {% block title %} {{page_title}} {% endblock title %}
 {% block content %}
     <div class="title">
-        {{obj.name}} 
+        {{obj.name}}
         <button class="form-button small"><a href="{% url edit_url obj.pk %}">Edit</a></button>
     </div>
     <div class="content">
-        {% if obj.image %}
-        <img src="{{obj.image.url}}" alt="">
+        {% if obj.cover %}
+        <img src="{{obj.image.url}}" alt="{{obj.name}}">
+        {% else %}
+        <img src="{% static 'images/publisher.png' %}" alt="">
         {% endif %}
         <div class="field-name">Name: </div><div>{{obj.name}}</div>
         <div class="field-name">Address: </div><div>{{obj.address}}</div>

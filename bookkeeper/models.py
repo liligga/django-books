@@ -2,7 +2,7 @@ from django.db import models
 
 
 def publisher_upload_to(instance, filename):
-    return 'uploads/publishers/%d/%s' % (instance, filename)
+    return 'publishers/%s/%s' % (instance.name, filename)
 
 class Publisher(models.Model):
     name = models.CharField(max_length=200)
@@ -19,7 +19,7 @@ class Publisher(models.Model):
 
 
 def author_upload_to(instance, filename):
-    return 'uploads/authors/%d/%s' % (instance, filename)
+    return 'authors/%s/%s' % (instance.name, filename)
 
 class Author(models.Model):
     name = models.CharField(max_length=100)
@@ -33,7 +33,7 @@ class Author(models.Model):
 
 
 def cover_upload_to(instance, filename):
-    return 'uploads/books/%d/%s' % (instance.pk, filename)
+    return 'books/%s/%s' % (instance.title, filename)
 
 class Book(models.Model):
     title = models.CharField(max_length=120)
