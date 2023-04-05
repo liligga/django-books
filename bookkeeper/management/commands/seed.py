@@ -4,6 +4,7 @@ from datetime import date
 from random import randint as rnd
 from bookkeeper.models import Book, Author, Publisher
 from faker import Faker
+from django.contrib.auth import get_user_model
 
 
 fake = Faker("ru_RU")
@@ -40,6 +41,13 @@ class BookFactory(factory.django.DjangoModelFactory):
 
 class Command(BaseCommand):
     def handle(self, *args, **kwargs):
+        User = get_user_model()
+        if User.objects.exists():
+            return
+        User.objects.create_superuser(username="admin", password="admin", email="admin@mail.ru")
+        self.stdout.write(self.style.SUCCESS("Admin user created successfuly(admin: admin)"))
+
+
         with factory.Faker.override_default_locale('ru_RU'):
             publ = PublisherFactory.create_batch(20)
             authr = AuthorFactory.create_batch(20)
