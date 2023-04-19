@@ -1,5 +1,5 @@
 from django import forms
-from .models import Book, Author, Publisher
+from .models import Book, Author, Publisher, Borrowing
 
 
 class BookForm(forms.ModelForm):
@@ -30,4 +30,11 @@ class PublisherForm(forms.ModelForm):
 class AuthorForm(forms.ModelForm):
     class Meta:
         model = Author
+        fields = '__all__'
+
+
+
+class BorrowingForm(forms.ModelForm):
+    class Meta:
+        model = Borrowing
         fields = '__all__'

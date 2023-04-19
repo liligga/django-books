@@ -1,0 +1,14 @@
+{% extends 'index.html' %}
+{% load widget_tweaks %}
+
+{% block content %}
+    <!-- {{form.as_div}} -->
+    <h5 class="title">Registration</h5>
+    <form method="POST" class="center-form">
+        {% csrf_token %}
+        <label>E-mail: </label>{% render_field form.email %}
+        <label>Username: </label>{% render_field form.username %}
+        <label>Password: </label>{% render_field form.password %}
+        <button type="submit" class="form-button">Register User</button>
+    </form>
+{% endblock content %}

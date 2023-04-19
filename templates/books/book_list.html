@@ -8,7 +8,7 @@
     </div>
     <div class="item-list">
         {% for obj in objects %}
-            <a href="{% url detail_url obj.id %}">
+            <a href="#">
                 {% if obj.cover %}
                 <img src="{{obj.cover.url}}" alt="{{obj.title}}">
                 {% else %}

@@ -32,7 +32,7 @@ class BookFactory(factory.django.DjangoModelFactory):
         year=rnd(2021, 2023),
         month=rnd(3,12),
         day=rnd(1, 30))
-    author = factory.Iterator(Author.objects.all())
+    # authors = factory.Iterator(Author.objects.all())
     publisher = factory.Iterator(Publisher.objects.all())
 
     class Meta:
@@ -55,4 +55,3 @@ class Command(BaseCommand):
             books = BookFactory.create_batch(55)
 
         self.stdout.write(self.style.SUCCESS("Fake data created successfuly"))
-
