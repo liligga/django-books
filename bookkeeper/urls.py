@@ -1,24 +1,40 @@
 from django.urls import path
-from .old_views import (
-    author_detail,
-    author_list,
-    book_list, 
-    book_detail,
-    create_author, 
-    create_book,
-    edit_author, 
-    edit_book,
-    publisher_list,
-    publisher_detail,
-    edit_publisher,
-    create_publisher
-)
+# from .old_views import (
+#     author_detail,
+#     author_list,
+#     book_list, 
+#     book_detail,
+#     create_author, 
+#     create_book,
+#     edit_author, 
+#     edit_book,
+#     publisher_list,
+#     publisher_detail,
+#     edit_publisher,
+#     create_publisher
+# )
 
-from .views import BooksView
+from .views import (
+    BooksListStaffView,
+    BookListView,
+    BookCreateStaffView,
+    BookDeleteStaffView,
+    BookDetailStaffView,
+    BookUpdateStaffView,
+    StaffLoginView,
+    UserLoginView
+)
 
 
 urlpatterns = [
-    path('', BooksView.as_view(), name='book_list'),
+    path('', BookListView.as_view(), name='book_list_for_user'),
+    path('books', BooksListStaffView.as_view(), name='book_list'),
+    path('books/create/', BookCreateStaffView.as_view(), name='book_create'),
+    path('books/<int:pk>/', BookDetailStaffView.as_view(), name='book_detail'),
+    path('books/<int:pk>/update/', BookUpdateStaffView.as_view(), name='book_update'),
+    path('books/<int:pk>/delete/', BookDeleteStaffView.as_view(), name='book_delete'),
+    path('login/staff/', StaffLoginView.as_view(), name='staff_login'),
+    path('login/normal/', UserLoginView.as_view(), name='lib_user_login'),
 ]
 
 
